@@ -2,14 +2,14 @@
   "name": "electron-react-parcel",
   "version": "1.0.0",
   "description": "Electron app build using ReactJS and Parcel web application bundler",
-  "main": "src/electron.js",
+  "main": "src/electron/electron.js",
   "scripts": {
-    "react-start": "parcel -p 3000 index.html --out-dir build",
+    "react-start": "parcel -p 7000 index.html --out-dir build",
     "react-build": "parcel build index.html --out-dir build --public-url ./",
     "electron-build": "electron-builder -mwl",
     "clean-build": "rm -rf build/ .cache dist/",
-    "build": "yarn clean-build && yarn react-build && yarn electron-build",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \""
+    "build": "npm run clean-build && npm run react-build && npm run electron-build",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:7000 && electron . \""
   },
   "keywords": [
     "boskysoft",
@@ -23,14 +23,13 @@
   "license": "MIT",
   "dependencies": {
     "electron-is-dev": "1.0.1",
-    "react": "16.7.0",
-    "react-dom": "16.7.0",
-    "semantic-ui-css": "2.4.1"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "build": {
     "appId": "com.boskysoft",
     "files": [
-      "src/electron.js",
+      "src/electron/electron.js",
       "src/assets/*",
       "build/**/*"
     ],
@@ -55,10 +54,10 @@
     "babel-plugin-transform-react-jsx": "6.24.1",
     "babel-preset-env": "1.7.0",
     "babel-preset-react": "6.24.1",
-    "concurrently": "4.1.0",
-    "cross-env": "5.2.0",
-    "electron": "4.0.1",
-    "electron-builder": "20.38.4",
+    "concurrently": "4.1.2",
+    "cross-env": "5.2.1",
+    "electron": "6.0.7",
+    "electron-builder": "21.2.0",
     "parcel-bundler": "1.12.3",
     "wait-on": "3.2.0"
   }
